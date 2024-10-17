@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 
 type FormType = {
 
     isInputClick: boolean,
+  
     
 }
 
@@ -12,7 +14,7 @@ type FormType = {
 
 export default function Form() {
 
-
+    const navigate = useNavigate()
 
     const [inputName, setInputName] = useState("")
     const [isInputClick, setIsInputClick] = useState(false)
@@ -21,6 +23,9 @@ export default function Form() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
           e.preventDefault()
+          alert(`${inputName} ... you're getting in your account`)
+          setInputName(" ")
+          navigate(`orderPage/${inputName}`)
     }
 
 
@@ -40,7 +45,7 @@ export default function Form() {
 
   return (
 
-    <FormStyle action="submit" onSubmit={handleSubmit} isInputClick={isInputClick}>
+    <FormStyle action="submit" onSubmit={handleSubmit} isInputClick={isInputClick} >
 
            <input 
               type="text" 
@@ -50,7 +55,7 @@ export default function Form() {
               onChange={handleChange}
               onClick={changeBackground}
               />
-           <button>Get in your account !</button>
+           <button>Get in your account !</button> <Link to="/orderPage">Go to the Order Page</Link>
 
     </FormStyle>
 

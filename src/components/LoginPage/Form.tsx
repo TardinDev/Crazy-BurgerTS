@@ -2,13 +2,20 @@ import { useState } from "react"
 import styled from "styled-components"
 
 
+type FormType = {
+
+    isInputClick: boolean,
+    
+}
+
+
 
 export default function Form() {
 
 
 
     const [inputName, setInputName] = useState("")
-
+    const [isInputClick, setIsInputClick] = useState(false)
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,16 +32,24 @@ export default function Form() {
     }
 
 
+    const changeBackground = () => {
+        setIsInputClick(true)
+  }
+
+
+
   return (
 
-    <FormStyle action="submit" onSubmit={handleSubmit}>
+    <FormStyle action="submit" onSubmit={handleSubmit} isInputClick={isInputClick}>
 
            <input 
               type="text" 
               placeholder="...write your name..."
               required
               value={inputName}
-              onChange={handleChange}/>
+              onChange={handleChange}
+              onClick={changeBackground}
+              />
            <button>get in your account</button>
 
     </FormStyle>
@@ -42,7 +57,7 @@ export default function Form() {
   )
 }
 
-const FormStyle = styled.form`
+const FormStyle = styled.form<FormType>`
 
       display:flex;
       flex-direction:column;
@@ -60,6 +75,7 @@ const FormStyle = styled.form`
       }
 
       button {
+        background-color:${props => props.isInputClick ? "green" : "lightgrey" };
         width:20.70rem;
         height:2rem;
 
@@ -68,6 +84,8 @@ const FormStyle = styled.form`
 
         padding:0px 5px;
         text-align:center;
+
+        cursor:pointer;
       }
 
      

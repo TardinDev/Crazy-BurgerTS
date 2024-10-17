@@ -1,4 +1,6 @@
 import { useState } from "react"
+import CrazyBurger from "../Reusable-ui/CrazyBurger"
+import styled from "styled-components"
 
 
 
@@ -28,10 +30,9 @@ export default function LoginPage() {
 
   return (
 
-    <div>
+    <LoginPageStyle>
 
-        <h1>Crazy-burger</h1>
-
+        <CrazyBurger imgWidth="10rem" imgHeight="8rem" label="8rem"/>
 
 
         <form action="submit" onSubmit={handleSubmit}>
@@ -44,7 +45,18 @@ export default function LoginPage() {
            <button>get in your account</button>
         </form>
 
-    </div>
+    </LoginPageStyle>
 
   )
 }
+
+
+const LoginPageStyle = styled.div`
+
+     background-color:#EB8317;
+     height:100vh;
+
+     
+
+
+`

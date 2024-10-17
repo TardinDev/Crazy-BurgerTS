@@ -29,13 +29,14 @@ export default function CrazyBurger({imgWidth, imgHeight, label}: CrazyBurgerTyp
 const CrazyBurgerStyle = styled.div<CrazyBurgerType>`
 
 
-      background-color:#EB8317;
+      background-color:#fff;
       display:flex;
       align-items:center;
       gap:10px;
 
       h1 {
-        font-Size:${props => props.label}
+        font-Size:${props => props.label};
+        color:#EB8317;
       }
 
       img {

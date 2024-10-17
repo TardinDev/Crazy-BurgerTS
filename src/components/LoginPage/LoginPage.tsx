@@ -56,7 +56,13 @@ const LoginPageStyle = styled.div`
      background-color:#EB8317;
      height:100vh;
 
-     
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
+     align-items:center;
+     gap:50px;
+
+
 
 
 `

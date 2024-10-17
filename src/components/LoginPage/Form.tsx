@@ -50,7 +50,7 @@ export default function Form() {
               onChange={handleChange}
               onClick={changeBackground}
               />
-           <button>get in your account</button>
+           <button>Get in your account !</button>
 
     </FormStyle>
 
@@ -76,8 +76,10 @@ const FormStyle = styled.form<FormType>`
 
       button {
         background-color:${props => props.isInputClick ? "green" : "lightgrey" };
+        color:${props => props.isInputClick ? "orange" : "grey" };
         width:20.70rem;
         height:2rem;
+        font-weight:bold;
 
         border:0.5px solid green;
         border-radius:5px;

@@ -1,44 +1,65 @@
-import { FaEuroSign, FaCamera, } from "react-icons/fa";
+import { useState } from "react";
+import { FaEuroSign, FaCamera, FaBullhorn } from "react-icons/fa";
+import { GrCubes } from "react-icons/gr";
 import styled from "styled-components";
 import Btn from "../../components/Reusable-ui/Btn";
 import { FaBurger } from "react-icons/fa6";
-import { GrCubes } from "react-icons/gr";
-import { FaBullhorn } from "react-icons/fa";
-
-
 
 export default function TabContain() {
-    
+  const [burgerName, setBurgerName] = useState("");
+  const [burgerImage, setBurgerImage] = useState("");
+  const [burgerPrice, setBurgerPrice] = useState("");
+
+  const handleBtnToAdd = () => {
+    console.log("Adding burger:", { burgerName, burgerImage, burgerPrice });
+  };
+
   return (
     <TabContainStyle>
       <div className="img-Input">
-        <img
-          src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJ1cmdlcnxlbnwwfHx8fDE2NjYwNzEzODY&ixlib=rb-1.2.1&q=80&w=200"
-          alt="Delicious Burger"
-        />
+        {burgerImage ? (
+          <img src={burgerImage} alt={burgerName} />
+        ) : (
+          <h2>No image yet!</h2>
+        )}
 
         <div className="inputBlock">
           <div className="iconInput">
             <FaBurger size={25} color="grey" />
-            <input type="text" placeholder="Burger's name!" />
+            <input
+              type="text"
+              placeholder="Burger's name!"
+              value={burgerName}
+              onChange={(e) => setBurgerName(e.target.value)}
+            />
           </div>
 
           <div className="iconInput">
             <FaCamera size={25} color="grey" />
-            <input type="text" placeholder="Download an image" />
+            <input
+              type="url"
+              placeholder="Enter image URL"
+              value={burgerImage}
+              onChange={(e) => setBurgerImage(e.target.value)}
+            />
           </div>
 
           <div className="lastInputBlock">
             <div className="iconInput">
               <FaEuroSign size={25} color="grey" />
-              <input type="text" placeholder="Give a price" />
+              <input
+                type="number"
+                placeholder="Price"
+                value={burgerPrice}
+                onChange={(e) => setBurgerPrice(e.target.value)}
+              />
             </div>
 
             <div className="iconInput">
               <GrCubes size={20} color="grey" />
               <select>
                 <option value="with_ad">En Stock</option>
-                <option value="ad_free">Pénurie</option>
+                <option value="ad_free">Shortage</option>
               </select>
             </div>
 
@@ -53,25 +74,19 @@ export default function TabContain() {
         </div>
       </div>
 
-    <div className="Btn">
-         <Btn />
-    </div>
-     
-
+      <div className="Btn">
+        <Btn onClick={handleBtnToAdd} />
+      </div>
     </TabContainStyle>
   );
 }
 
 const TabContainStyle = styled.div`
-  
   background-color: #f8f9fa;
-
   display: flex;
   flex-direction: column;
-  justify-content:center;
-
-  gap:15px;
-  
+  justify-content: center;
+  gap: 15px;
   padding: 1rem 5rem;
 
   .img-Input {
@@ -89,12 +104,32 @@ const TabContainStyle = styled.div`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
+  h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: lightgrey;
+    width: 15rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: grey;
+      transform: scale(1.05);
+    }
+  }
+
   .inputBlock {
     display: flex;
     flex-direction: column;
     gap: 10px;
-   
-    
+
     .iconInput {
       display: flex;
       align-items: center;
@@ -103,7 +138,6 @@ const TabContainStyle = styled.div`
       background-color: #fff;
       border: 1px solid grey;
       border-radius: 5px;
-
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
       &:hover {
@@ -111,7 +145,8 @@ const TabContainStyle = styled.div`
         box-shadow: 0 0 10px rgba(235, 131, 23, 0.5);
       }
 
-      input, select {
+      input,
+      select {
         border: none;
         outline: none;
         font-size: 1rem;
@@ -134,11 +169,7 @@ const TabContainStyle = styled.div`
     }
   }
 
-
-
   .Btn {
-    
-     margin-left:-6rem;
+    margin-left: -6rem;
   }
-  
 `;

@@ -1,17 +1,42 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEuroSign, FaCamera, FaBullhorn } from "react-icons/fa";
 import { GrCubes } from "react-icons/gr";
 import styled from "styled-components";
-import Btn from "../../components/Reusable-ui/Btn";
+import Btn from "./Btn";
+import orderContext from "../../context/orderContext";
 import { FaBurger } from "react-icons/fa6";
+
+type BurgerType = {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+};
 
 export default function TabContain() {
   const [burgerName, setBurgerName] = useState("");
   const [burgerImage, setBurgerImage] = useState("");
   const [burgerPrice, setBurgerPrice] = useState("");
 
-  const handleBtnToAdd = () => {
-    console.log("Adding burger:", { burgerName, burgerImage, burgerPrice });
+  // Récupérer handleAddBurger depuis le contexte
+  const { handleAddBurger } = useContext(orderContext);
+
+  // Fonction pour créer et ajouter un nouveau burger
+  const handleAddNewBurger = () => {
+    const newBurger: BurgerType = {
+      id: Date.now(),
+      title: burgerName,
+      image: burgerImage,
+      price: Number(burgerPrice),
+    };
+
+    // Appeler handleAddBurger depuis le contexte pour ajouter le burger
+    handleAddBurger(newBurger);
+
+    // Réinitialiser les champs
+    setBurgerName("");
+    setBurgerImage("");
+    setBurgerPrice("");
   };
 
   return (
@@ -75,7 +100,7 @@ export default function TabContain() {
       </div>
 
       <div className="Btn">
-        <Btn onClick={handleBtnToAdd} />
+        <Btn onClick={handleAddNewBurger} />
       </div>
     </TabContainStyle>
   );
@@ -170,6 +195,6 @@ const TabContainStyle = styled.div`
   }
 
   .Btn {
-    margin-left: -6rem;
+    margin-left: -8rem;
   }
 `;

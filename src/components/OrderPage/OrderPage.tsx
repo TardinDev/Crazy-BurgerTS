@@ -1,10 +1,19 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import HeaderOrder from "./HeaderOrder";
-import Menu from "./Menu";
+
 import { useState } from "react";
 import orderContext from "../../context/orderContext";
+import {DataBurger} from "../../utils/DataBurger";
 
+import HeaderOrder from "./HeaderOrder/HeaderOrder";
+import Menu from "./Menu/Menu";
+
+type Burger = {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+};
 
 
 export default function OrderPage() {
@@ -13,9 +22,29 @@ export default function OrderPage() {
 
   const [isActiveBtn, setIsActiveBtn] = useState<boolean>(false);
 
+  // État pour gérer la liste des burgers
+  const [burgers, setBurgers] = useState<Burger[]>([...DataBurger ]);
+
+  // Fonction pour ajouter un nouveau burger
+  const handleAddBurger = (newBurger: Burger) => {
+    setBurgers((prevBurgers) => [...prevBurgers, newBurger]);
+  };
+
+    // Fonction pour supprimer un burger
+    const handleDeleteBurger = (id: number) => {
+      setBurgers((prevBurgers) => prevBurgers.filter((burger) => burger.id !== id));
+    };
+
+
   const orderContextValue = {
+
     isActiveBtn,
-    setIsActiveBtn,
+  setIsActiveBtn,
+  burgers,
+  setBurgers, 
+  handleAddBurger,
+  handleDeleteBurger,
+
   };
 
   return (
@@ -29,7 +58,6 @@ export default function OrderPage() {
 }
 
 
-// Styles du composant OrderPage
 const OrderPageStyle = styled.div`
   background-color: #eb8317;
   height: 100vh;

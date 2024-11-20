@@ -21,8 +21,19 @@ export default function TabContain() {
   // Récupérer handleAddBurger depuis le contexte
   const { handleAddBurger } = useContext(orderContext);
 
+  // Vérifie que tous les champs sont remplis
+  const isFormComplete = burgerName.trim() !== "" && burgerImage.trim() !== "" && burgerPrice.trim() !== "";
+
   // Fonction pour créer et ajouter un nouveau burger
   const handleAddNewBurger = () => {
+    if (!isFormComplete) {
+      alert("Remplir d'abord tous les champs");
+      return; // Arrête l'exécution si le formulaire est incomplet
+    }
+  
+    alert("You gonna add a New Burger...");
+  
+      
     const newBurger: BurgerType = {
       id: Date.now(),
       title: burgerName,
@@ -56,6 +67,7 @@ export default function TabContain() {
               placeholder="Burger's name!"
               value={burgerName}
               onChange={(e) => setBurgerName(e.target.value)}
+              required
             />
           </div>
 
@@ -66,6 +78,7 @@ export default function TabContain() {
               placeholder="Enter image URL"
               value={burgerImage}
               onChange={(e) => setBurgerImage(e.target.value)}
+              required
             />
           </div>
 
@@ -77,6 +90,7 @@ export default function TabContain() {
                 placeholder="Price"
                 value={burgerPrice}
                 onChange={(e) => setBurgerPrice(e.target.value)}
+                required
               />
             </div>
 
@@ -100,7 +114,8 @@ export default function TabContain() {
       </div>
 
       <div className="Btn">
-        <Btn onClick={handleAddNewBurger} />
+        {/* Désactiver le bouton si les champs ne sont pas remplis */}
+        <Btn onClick={handleAddNewBurger} disabled={!isFormComplete} />
       </div>
     </TabContainStyle>
   );

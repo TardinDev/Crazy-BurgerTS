@@ -1,21 +1,22 @@
 import styled from "styled-components";
+import { FaTrashAlt } from "react-icons/fa";
 
 export default function LeftSide() {
   const items = [
     {
       name: "Burger",
       price: "15€",
-      image: "https://via.placeholder.com/150/FF5733/FFFFFF?text=Burger",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgQ2shHE17r74DyWvXQ_p6KG0g3g_eN3PoSg&s",
     },
     {
       name: "Fries",
       price: "5€",
-      image: "https://via.placeholder.com/150/FFC300/FFFFFF?text=Fries",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVh17hZEh0DAIwUq32AF9Tk9F1fmMzlmHTKw&s",
     },
     {
       name: "Drink",
       price: "3€",
-      image: "https://via.placeholder.com/150/DAF7A6/000000?text=Drink",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD-0V2rffvJe55AdzAecfg3rizRjE8v9UVg&s",
     },
   ];
 
@@ -32,7 +33,13 @@ export default function LeftSide() {
               <h4>{item.name}</h4>
               <p>{item.price}</p>
             </div>
-            <img src={item.image} alt={item.name} />
+            <div className="image-wrapper">
+              <img src={item.image} alt={item.name} />
+              <span className="quantity">x1</span>
+              <div className="trash-icon">
+                <FaTrashAlt />
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -53,7 +60,7 @@ const LeftSideStyle = styled.div`
 
   .total {
     background-color: #000;
-    height: 20%;
+    height: 10%;
     color: orange;
     display: flex;
     justify-content: space-between;
@@ -73,16 +80,16 @@ const LeftSideStyle = styled.div`
 
   .list {
     display: flex;
-    flex-direction: column; /* Disposition verticale des cartes */
+    flex-direction: column;
     gap: 20px;
     padding: 20px;
     background-color: #fff;
-    height: 70%;
+    flex: 1;
     overflow-y: auto;
 
     .card {
-      display: flex; /* Aligne les éléments horizontalement */
-      justify-content: space-between; /* Sépare le contenu et l'image */
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       background-color: #fff;
       border-radius: 10px;
@@ -91,8 +98,9 @@ const LeftSideStyle = styled.div`
       transition: transform 0.3s ease, box-shadow 0.3s ease;
 
       &:hover {
-        transform: scale(1.02); /* Zoom léger au survol */
+        transform: scale(1.02);
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
       }
 
       .card-content {
@@ -112,11 +120,49 @@ const LeftSideStyle = styled.div`
         }
       }
 
-      img {
-        width: 80px; /* Taille fixe pour l'image */
-        height: 80px;
-        object-fit: cover;
-        border-left: 2px solid #f1f1f1; /* Séparation entre l'image et le contenu */
+      .image-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-left: 2px solid #f1f1f1;
+          transition: opacity 0.3s ease;
+        }
+
+        .quantity {
+          position: absolute;
+          bottom: 5px;
+          left: -25px;
+          background: #000;
+          color: orange;
+          padding: 2px 5px;
+          border-radius: 5px;
+          font-size: 0.8rem;
+        }
+
+        .trash-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.5rem;
+          color: red;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        &:hover img {
+          opacity: 0;
+        }
+
+        &:hover .trash-icon {
+          opacity: 1;
+        }
       }
     }
   }
@@ -137,7 +183,6 @@ const LeftSideStyle = styled.div`
     }
   }
 
-  /* Responsivité */
   @media (max-width: 768px) {
     .total {
       h3 {

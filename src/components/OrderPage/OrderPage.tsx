@@ -22,6 +22,9 @@ export default function OrderPage() {
 
   const [isActiveBtn, setIsActiveBtn] = useState<boolean>(false);
 
+  const [basket, setBasket] = useState<Burger[]>([]); // État pour gérer le panier
+
+
   // État pour gérer la liste des burgers
   const [burgers, setBurgers] = useState<Burger[]>([...DataBurger ]);
 
@@ -35,6 +38,14 @@ export default function OrderPage() {
       setBurgers((prevBurgers) => prevBurgers.filter((burger) => burger.id !== id));
     };
 
+    const addToBasket = (burger: Burger) => {
+      setBasket((prevBasket) => [...prevBasket, burger]); // Ajout au panier
+    };
+
+    const removeFromBasket = (id: number) => {
+      setBasket((prevBasket) => prevBasket.filter((burger) => burger.id !== id));
+    };
+
 
   const orderContextValue = {
 
@@ -44,6 +55,10 @@ export default function OrderPage() {
   setBurgers, 
   handleAddBurger,
   handleDeleteBurger,
+  basket,
+  addToBasket,
+  removeFromBasket, // Ajouter la fonction de suppression
+
 
   };
 

@@ -1,42 +1,35 @@
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
+import { useContext } from "react";
+import orderContext from "../../../../context/orderContext";
 
 export default function LeftSide() {
-  const items = [
-    {
-      name: "Burger",
-      price: "15€",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgQ2shHE17r74DyWvXQ_p6KG0g3g_eN3PoSg&s",
-    },
-    {
-      name: "Fries",
-      price: "5€",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVh17hZEh0DAIwUq32AF9Tk9F1fmMzlmHTKw&s",
-    },
-    {
-      name: "Drink",
-      price: "3€",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPD-0V2rffvJe55AdzAecfg3rizRjE8v9UVg&s",
-    },
-  ];
+  const { basket, removeFromBasket } = useContext(orderContext); // Récupérer la liste du panier et la fonction pour retirer
 
   return (
     <LeftSideStyle>
       <div className="total">
         <h3>Total</h3>
-        <span>23€</span>
+        <span>
+          {basket
+            .reduce((total, item) => total + item.price, 0)
+            .toFixed(2)}{" "}
+          €
+        </span>
       </div>
       <div className="list">
-        {items.map((item, index) => (
+        {basket.map((item, index) => (
           <div className="card" key={index}>
             <div className="card-content">
-              <h4>{item.name}</h4>
-              <p>{item.price}</p>
+              <h4>{item.title}</h4>
+              <p>{item.price.toFixed(2)} €</p>
             </div>
             <div className="image-wrapper">
-              <img src={item.image} alt={item.name} />
-              <span className="quantity">x1</span>
-              <div className="trash-icon">
+              <img src={item.image} alt={item.title} />
+              <div
+                className="trash-icon"
+                onClick={() => removeFromBasket(item.id)} // Appeler removeFromBasket avec l'ID
+              >
                 <FaTrashAlt />
               </div>
             </div>
@@ -134,17 +127,6 @@ const LeftSideStyle = styled.div`
           transition: opacity 0.3s ease;
         }
 
-        .quantity {
-          position: absolute;
-          bottom: 5px;
-          left: -25px;
-          background: #000;
-          color: orange;
-          padding: 2px 5px;
-          border-radius: 5px;
-          font-size: 0.8rem;
-        }
-
         .trash-icon {
           position: absolute;
           top: 50%;
@@ -153,15 +135,17 @@ const LeftSideStyle = styled.div`
           font-size: 1.5rem;
           color: red;
           opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          cursor: pointer;
         }
 
         &:hover img {
-          opacity: 0;
+          opacity: 0.3;
         }
 
         &:hover .trash-icon {
           opacity: 1;
+          transform: translate(-50%, -50%) scale(1.2);
         }
       }
     }

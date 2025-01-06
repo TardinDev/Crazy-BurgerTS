@@ -26,7 +26,7 @@ const AdminContainWelcomeStyle = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   
-  font-family: 'Playfair Display', serif; /* Utilisation d'une police élégante */
+  font-family: 'Pacifico', cursive; /* Police curviligne avec des lignes fluides */
 
   h1 {
     color: #eb8317;

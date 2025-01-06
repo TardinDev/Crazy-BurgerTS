@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 
@@ -49,13 +49,13 @@ export default function Form() {
 
            <input 
               type="text" 
-              placeholder="...write your name..."
+              placeholder="write your name..."
               required
               value={inputName}
               onChange={handleChange}
               onClick={changeBackground}
               />
-           <button>Get in your account !</button> <Link to="/orderPage">Go to the Order Page</Link>
+           <button>Get in your account !</button>
 
     </FormStyle>
 
@@ -76,7 +76,7 @@ const FormStyle = styled.form<FormType>`
         border-radius:5px;
 
         padding:0px 5px;
-        text-align:center;
+        text-align:start;
       }
 
       button {

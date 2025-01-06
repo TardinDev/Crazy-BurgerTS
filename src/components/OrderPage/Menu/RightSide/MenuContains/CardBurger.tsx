@@ -1,17 +1,21 @@
 import { useContext } from "react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
-import orderContext from "../../context/orderContext";
+import orderContext from "../../../../../context/orderContext";
 
 const comingSoonImage = "https://picsum.photos/200/150?grayscale"; // Image générée par Picsum
 
 type CardBurgerType = {
+
   image: string;
   title: string;
   price: number;
+  id:number;
+  onDelete: (id: number) => void; // Ajout de la prop `onDelete`
+
 };
 
-export default function CardBurger({ image, title, price }: CardBurgerType) {
+export default function CardBurger({ id, image, title, price, onDelete }: CardBurgerType) {
   // Utilisation du contexte dans le composant
   const { isActiveBtn } = useContext(orderContext);
 
@@ -19,11 +23,13 @@ export default function CardBurger({ image, title, price }: CardBurgerType) {
     e.currentTarget.src = comingSoonImage;
   };
 
+  
+
   return (
     <CardBurgerStyle>
       {/* Affichage conditionnel du bouton de suppression */}
       {isActiveBtn && (
-        <button className="delete-btn">
+        <button className="delete-btn" onClick={() => onDelete(id)}>
           <FaTimes size={16} />
         </button>
       )}
@@ -60,7 +66,7 @@ const CardBurgerStyle = styled.div`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: #ff4d4f;
+    background: #C62E2E;
     color: white;
     border: none;
     border-radius: 50%;
@@ -68,7 +74,7 @@ const CardBurgerStyle = styled.div`
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s ease-in-out;
-
+    
     &:hover {
       background-color: #ff6668;
     }

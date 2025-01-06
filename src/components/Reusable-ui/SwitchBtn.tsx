@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FaCircle } from "react-icons/fa";
 import styled from "styled-components";
-import orderContext from "../../context/orderContext"; 
+import orderContext from "../../context/orderContext";
 
 type SwitchBtnType = {
   isActiveBtn: boolean;

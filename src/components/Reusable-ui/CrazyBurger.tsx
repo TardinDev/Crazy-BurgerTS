@@ -1,12 +1,13 @@
 import styled from "styled-components"
-import cbLogo from "../../../public/logo-orange.png"
+import cbLogo from "../../../public/images/logo-orange.png"
 
 
 type CrazyBurgerType = {
 
     imgWidth:string,
     imgHeight:string,
-    label:string
+    label:string,
+    
 }
 
 

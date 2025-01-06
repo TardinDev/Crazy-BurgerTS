@@ -1,6 +1,7 @@
 import { BsPersonCircle } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import SwitchBtn from "../../Reusable-ui/SwitchBtn";
 
 
 type ProfileType = {
@@ -14,6 +15,8 @@ export default function Profile({inputName}: ProfileType) {
   return (
 
      <ProfileStyle >
+
+      <SwitchBtn/>
 
        <div>
           <h1> Hey, <span> {inputName} </span> </h1>
@@ -32,6 +35,7 @@ export default function Profile({inputName}: ProfileType) {
 const ProfileStyle = styled.div`
 
    display:flex;
+   align-items:center;
    gap:10px;
    padding-top:10px;
 

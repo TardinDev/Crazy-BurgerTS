@@ -39,7 +39,7 @@ const TabStyle = styled.div`
 
      h3 {
      
-       color:grey;
+       color:#686D76;
      }
 
      

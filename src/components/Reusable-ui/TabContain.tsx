@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEuroSign, FaCamera, FaBullhorn } from "react-icons/fa";
 import { GrCubes } from "react-icons/gr";
 import styled from "styled-components";
@@ -6,20 +6,25 @@ import Btn from "./Btn";
 import orderContext from "../../context/orderContext";
 import { FaBurger } from "react-icons/fa6";
 
+
+
+// Définition du type pour les props de TabContain
 type BurgerType = {
   id: number;
   image: string;
   title: string;
   price: number;
+
 };
 
-export default function TabContain() {
-  const [burgerName, setBurgerName] = useState("");
-  const [burgerImage, setBurgerImage] = useState("");
-  const [burgerPrice, setBurgerPrice] = useState("");
+// Définition du composant TabContain avec TypeScript
+const TabContain: React.FC = () => {
+  const [burgerName, setBurgerName] = useState<string>("");
+  const [burgerImage, setBurgerImage] = useState<string>("");
+  const [burgerPrice, setBurgerPrice] = useState<string>("");
 
-  // Récupérer handleAddBurger depuis le contexte
-  const { handleAddBurger } = useContext(orderContext);
+  // Récupérer handleAddBurger et addToBasket depuis le contexte
+  const { handleAddBurger, addToBasket } = useContext(orderContext);
 
   // Vérifie que tous les champs sont remplis
   const isFormComplete = burgerName.trim() !== "" && burgerImage.trim() !== "" && burgerPrice.trim() !== "";
@@ -30,10 +35,9 @@ export default function TabContain() {
       alert("Remplir d'abord tous les champs");
       return; // Arrête l'exécution si le formulaire est incomplet
     }
-  
+
     alert("You gonna add a New Burger...");
-  
-      
+
     const newBurger: BurgerType = {
       id: Date.now(),
       title: burgerName,
@@ -41,8 +45,11 @@ export default function TabContain() {
       price: Number(burgerPrice),
     };
 
-    // Appeler handleAddBurger depuis le contexte pour ajouter le burger
+    // Ajouter le burger à la liste des burgers
     handleAddBurger(newBurger);
+
+    // Ajouter le burger au panier
+    addToBasket(newBurger);
 
     // Réinitialiser les champs
     setBurgerName("");
@@ -119,8 +126,9 @@ export default function TabContain() {
       </div>
     </TabContainStyle>
   );
-}
+};
 
+// Styles pour TabContain
 const TabContainStyle = styled.div`
   background-color: #f8f9fa;
   display: flex;
@@ -213,3 +221,5 @@ const TabContainStyle = styled.div`
     margin-left: -8rem;
   }
 `;
+
+export default TabContain;

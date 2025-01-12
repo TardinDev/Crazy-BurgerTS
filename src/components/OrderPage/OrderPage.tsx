@@ -15,7 +15,6 @@ type Burger = {
   price: number;
 };
 
-
 export default function OrderPage() {
 
   const { inputName } = useParams<{ inputName: string }>(); 
@@ -24,8 +23,6 @@ export default function OrderPage() {
 
   const [basket, setBasket] = useState<Burger[]>([]); // État pour gérer le panier
 
-
-  // État pour gérer la liste des burgers
   const [burgers, setBurgers] = useState<Burger[]>([...DataBurger ]);
 
   // Fonction pour ajouter un nouveau burger
@@ -46,6 +43,10 @@ export default function OrderPage() {
       setBasket((prevBasket) => prevBasket.filter((burger) => burger.id !== id));
     };
 
+    const removeBurger = (id: number) => {
+      setBurgers((prevBurgers) => prevBurgers.filter((burger) => burger.id !== id));
+    };
+
 
   const orderContextValue = {
 
@@ -57,7 +58,8 @@ export default function OrderPage() {
   handleDeleteBurger,
   basket,
   addToBasket,
-  removeFromBasket, // Ajouter la fonction de suppression
+  removeFromBasket, 
+  removeBurger,
 
 
   };

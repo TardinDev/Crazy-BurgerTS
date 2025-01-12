@@ -47,6 +47,11 @@ export default function OrderPage() {
       setBurgers((prevBurgers) => prevBurgers.filter((burger) => burger.id !== id));
     };
 
+  const updateBurger = (updatedBurger: Burger) => {
+    setBurgers((prevBurgers) => prevBurgers.map((burger) => 
+                                    burger.id === updatedBurger.id ? updatedBurger : burger ) );
+      };
+
 
   const orderContextValue = {
 
@@ -60,6 +65,7 @@ export default function OrderPage() {
   addToBasket,
   removeFromBasket, 
   removeBurger,
+  updateBurger,
 
 
   };

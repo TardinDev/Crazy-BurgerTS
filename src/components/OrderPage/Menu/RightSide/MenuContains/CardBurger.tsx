@@ -1,49 +1,52 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import orderContext from "../../../../../context/orderContext";
 
-const comingSoonImage = "https://picsum.photos/200/150?grayscale"; // Image générée par Picsum
-
 type CardBurgerType = {
-
+  id: number;
   image: string;
   title: string;
   price: number;
-  id:number;
-  onDelete: (id: number) => void; // Ajout de la prop `onDelete`
-
+  onClick: () => void;
+  onDelete: () => void;
 };
 
-export default function CardBurger({ id, image, title, price, onDelete }: CardBurgerType) {
-  // Utilisation du contexte dans le composant
-  const { isActiveBtn } = useContext(orderContext);
+const CardBurger: React.FC<CardBurgerType> = ({ id, image, title, price, onClick, onDelete }) => {
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = comingSoonImage;
+  const { isActiveBtn } = useContext(orderContext);
+  const { addToBasket } = useContext(orderContext);
+
+  const handleAddToBasket = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const burger = { id, image, title, price };
+    addToBasket(burger);
   };
 
-  
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onDelete();
+  };
 
   return (
-    <CardBurgerStyle>
-      {/* Affichage conditionnel du bouton de suppression */}
-      {isActiveBtn && (
-        <button className="delete-btn" onClick={() => onDelete(id)}>
-          <FaTimes size={16} />
-        </button>
-      )}
-      <img src={image} alt={title} onError={handleImageError} />
+    <CardBurgerStyle onClick={onClick}>
+
+      {isActiveBtn && 
+        <div className="delete-icon" onClick={handleDelete}>
+          <FaTimes />
+        </div>  }
+
+      <img src={image} alt={title} />
       <h2>{title}</h2>
       <div className="price-btn">
         <span className="price">{price.toFixed(2)} €</span>
-        <button className="add-btn">
+        <button className="add-btn" onClick={handleAddToBasket}>
           Add <FaPlus size={20} />
         </button>
       </div>
     </CardBurgerStyle>
   );
-}
+};
 
 const CardBurgerStyle = styled.div`
   position: relative;
@@ -52,7 +55,6 @@ const CardBurgerStyle = styled.div`
   width: 15rem;
   padding: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,21 +64,30 @@ const CardBurgerStyle = styled.div`
     transform: scale(1.05);
   }
 
-  .delete-btn {
+  .delete-icon {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: #C62E2E;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 0.3rem;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
-    
+    color: #ff0000;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
     &:hover {
-      background-color: #ff6668;
+      background-color: rgba(255, 0, 0, 0.8); 
+      color: white;
+      transform: scale(1.1);
+    }
+
+    svg {
+      font-size: 1.2rem;
     }
   }
 
@@ -127,3 +138,5 @@ const CardBurgerStyle = styled.div`
     }
   }
 `;
+
+export default CardBurger;

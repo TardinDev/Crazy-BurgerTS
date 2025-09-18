@@ -1,10 +1,15 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 import AdminTabs from "./AdminTabs";
 import AdminContains from "./AdminContains";
+import { Burger } from "../../../../../types";
 
+type AdminType = {
+  selectedBurger: Burger | null; // Modifier le type pour correspondre à BurgerType
 
-export default function Admin() {
+};
+
+const Admin: React.FC<AdminType> = ({ selectedBurger }) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isActiveTab, setIsActiveTab] = useState<string>("button");
 
@@ -13,18 +18,18 @@ export default function Admin() {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Fonction pour gérer l'activation d'un onglet avec id typé
+  // Fonction pour gérer l'activation d'un onglet
   const handleTab = (id: string): void => {
-    setIsActiveTab(id); 
+    setIsActiveTab(id);
   };
 
   return (
     <AdminStyle>
       <AdminTabs onClick={handleCollapsed} isCollapsed={isCollapsed} handleTab={handleTab} />
-      {isCollapsed && <AdminContains isActiveTab={isActiveTab} />} 
+      {isCollapsed && <AdminContains isActiveTab={isActiveTab} selectedBurger={selectedBurger} />}
     </AdminStyle>
   );
-}
+};
 
 const AdminStyle = styled.div`
   background-color: blue;
@@ -34,3 +39,5 @@ const AdminStyle = styled.div`
   left: 0;
   right: 0;
 `;
+
+export default Admin;

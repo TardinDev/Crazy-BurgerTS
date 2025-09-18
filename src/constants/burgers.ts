@@ -1,4 +1,6 @@
-export const DataBurger = [
+import { Burger } from '../types';
+
+export const BURGER_DATA: Burger[] = [
   {
     id: 1,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6cd4vv5ttWIzdpMadCqUbmFJMKHl9gw2PKQ&s",

@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 type AdminButtonType = {
 
-    onClick:() => void
+    onClick:() => void;
     disabled: boolean; 
+    children?: React.ReactNode; 
+    label:string;
+
 
 }
 
 
-export default function Btn({onClick, disabled}: AdminButtonType) {
+export default function Btn({onClick, disabled, label, children}: AdminButtonType) {
 
   return (
     <ButtonContainer  >
-      <button onClick={onClick} disabled={disabled}> add New Burger</button>
+      <button onClick={onClick} disabled={disabled}>{children ?? label}</button>
     </ButtonContainer>
   );
 }

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import cbLogo from "../../../public/images/logo-orange.png"
 
 
 type CrazyBurgerType = {
@@ -19,7 +18,7 @@ export default function CrazyBurger({imgWidth, imgHeight, label}: CrazyBurgerTyp
       <CrazyBurgerStyle imgWidth={imgWidth} imgHeight={imgHeight} label={label}  >
 
         <h1>Crazy</h1>
-          <img src={cbLogo} alt="burgerimage"/>
+          <img src="/images/logo-orange.png" alt="burgerimage"/>
         <h1>Burger</h1>
 
       </CrazyBurgerStyle>

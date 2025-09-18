@@ -20,7 +20,7 @@ export default function Profile({inputName}: ProfileType) {
 
        <div>
           <h1> Hey, <span> {inputName} </span> </h1>
-           <Link to="/" >disconnexion</Link>
+           <Link to="/" >Déconnexion</Link>
        </div>
 
       <BsPersonCircle size={55} color="lightgrey" />

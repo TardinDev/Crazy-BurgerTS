@@ -2,19 +2,31 @@ import React from 'react';
 import { FaEuroSign, FaCamera } from 'react-icons/fa';
 import { FaBurger } from 'react-icons/fa6';
 import styled from 'styled-components';
-import { LoadingButton } from './LoadingSpinner';
-import { useBurgerForm } from '../../hooks/useBurgerForm';
+import Btn from './Btn';
+import { Burger } from '../../types';
+import { useBurgerEdit } from '../../hooks/useBurgerEdit';
 
-const TabContain: React.FC = () => {
-  const { formData, updateField, submitBurger, errors, isSubmitting } = useBurgerForm();
+type ChangeBurgerFormProps = {
+  selectedBurger: Burger | null;
+  onSaveChanges: (updatedBurger: Burger) => void;
+};
+
+const ChangeBurgerForm: React.FC<ChangeBurgerFormProps> = ({
+  selectedBurger,
+  onSaveChanges,
+}) => {
+  const { formData, updateField, isFormValid, saveChanges } = useBurgerEdit(
+    selectedBurger,
+    onSaveChanges
+  );
 
   return (
-    <TabContainStyle>
+    <ChangeBurgerFormStyle>
       <div className="img-Input">
         {formData.image ? (
           <img src={formData.image} alt={formData.name} />
         ) : (
-          <h2>No image yet!</h2>
+          <h2>Click on Burger!</h2>
         )}
 
         <div className="inputBlock">
@@ -54,27 +66,16 @@ const TabContain: React.FC = () => {
       </div>
 
       <div className="Btn">
-        <LoadingButton
-          isLoading={isSubmitting}
-          onClick={submitBurger}
-          disabled={Object.keys(errors).length > 0}
-        >
-          Ajouter au Menu
-        </LoadingButton>
-        {Object.keys(errors).length > 0 && (
-          <ErrorList>
-            {Object.entries(errors).map(([field, error]) => (
-              <ErrorItem key={field}>{error}</ErrorItem>
-            ))}
-          </ErrorList>
-        )}
+        <Btn onClick={saveChanges} disabled={!isFormValid} label="Save Change">
+          Save Changes
+        </Btn>
       </div>
-    </TabContainStyle>
+    </ChangeBurgerFormStyle>
   );
 };
 
-// Styles pour TabContain (inchangés)
-const TabContainStyle = styled.div`
+
+const ChangeBurgerFormStyle = styled.div`
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
@@ -153,22 +154,4 @@ const TabContainStyle = styled.div`
   }
 `;
 
-const ErrorList = styled.div`
-  margin-top: 12px;
-  padding: 12px;
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: 6px;
-`;
-
-const ErrorItem = styled.div`
-  color: #dc2626;
-  font-size: 14px;
-  margin-bottom: 4px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-export default TabContain;
+export default ChangeBurgerForm;

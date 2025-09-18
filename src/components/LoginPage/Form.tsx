@@ -21,11 +21,11 @@ export default function Form() {
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-
           e.preventDefault()
-          alert(`${inputName} ... you're getting in your account`)
-          setInputName(" ")
-          navigate(`orderPage/${inputName}`)
+          const name = inputName.trim()
+          alert(`${name} ... you're getting in your account`)
+          setInputName("")
+          navigate(`/orderPage/${name}`)
     }
 
 

@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 
 
-type TabStyle = {
+type TabProps = {
 
     onClick:() => void, 
     label:string, 
     icon: React.ReactNode; // L'icône, typée comme ReactNode pour accepter n'importe quel composant JSX
 }
 
-export default function Tab({onClick, label, icon}: TabStyle) {
+export default function Tab({onClick, label, icon}: TabProps) {
 
 
   return (

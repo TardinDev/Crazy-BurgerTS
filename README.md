@@ -1,51 +1,55 @@
-# React + TypeScript + Vite
+# Crazy Burger TS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application React TypeScript moderne pour la gestion de commandes de burgers.
 
-Currently, two official plugins are available:
+## 🏗️ Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+src/
+├── components/          # Composants React réutilisables
+│   ├── LoginPage/      # Page de connexion
+│   ├── OrderPage/      # Page de commande
+│   └── Reusable-ui/    # Composants UI réutilisables
+├── context/            # Contextes React (gestion d'état)
+├── hooks/              # Hooks personnalisés
+├── types/              # Définitions TypeScript
+├── constants/          # Constantes et données
+├── lib/                # Utilitaires et helpers
+└── assets/             # Ressources statiques
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Technologies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **React 18** - Bibliothèque UI
+- **TypeScript** - Typage statique
+- **Styled Components** - CSS-in-JS
+- **React Router DOM** - Navigation
+- **React Icons** - Icônes
+- **Vite** - Build tool moderne
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 📦 Scripts
+
+```bash
+npm run dev      # Démarrer le serveur de développement
+npm run build    # Construire pour la production
+npm run lint     # Analyser le code avec ESLint
+npm run preview  # Prévisualiser la build de production
 ```
-# Crazy-BurgerTS
+
+## 🛠️ Fonctionnalités
+
+- Interface utilisateur moderne et responsive
+- Gestion d'état avec Context API
+- Système d'administration pour les burgers
+- Panier de commande interactif
+- Gestion d'erreurs avec Error Boundary
+- Code TypeScript strict et typé
+
+## 🎯 Bonnes Pratiques
+
+- Architecture modulaire et scalable
+- Composants réutilisables
+- Hooks personnalisés pour la logique métier
+- Types TypeScript stricts
+- Constantes centralisées
+- Code propre et maintenable

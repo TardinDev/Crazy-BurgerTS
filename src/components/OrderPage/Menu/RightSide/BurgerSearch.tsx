@@ -137,11 +137,11 @@ export const BurgerSearch: React.FC<BurgerSearchProps> = ({ onFilteredBurgers })
 };
 
 const SearchContainer = styled.div`
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #f8fafe;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
 `;
 
@@ -149,12 +149,12 @@ const SearchHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   h3 {
     margin: 0;
     color: #1e293b;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
   }
 `;
@@ -163,9 +163,9 @@ const ClearButton = styled.button`
   background: #fee2e2;
   color: #dc2626;
   border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 12px;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -177,12 +177,12 @@ const ClearButton = styled.button`
 
 const FiltersRow = styled.div`
   display: flex;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 8px;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
   }
 `;
 
@@ -193,17 +193,17 @@ const FilterGroup = styled.div`
 `;
 
 const FilterLabel = styled.label`
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 500;
   color: #374151;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 `;
 
 const FilterSelect = styled.select`
-  padding: 8px 12px;
+  padding: 4px 8px;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 4px;
+  font-size: 12px;
   background: white;
   cursor: pointer;
   transition: border-color 0.2s ease;
@@ -211,15 +211,15 @@ const FilterSelect = styled.select`
   &:focus {
     outline: none;
     border-color: #eb8317;
-    box-shadow: 0 0 0 3px rgba(235, 131, 23, 0.1);
+    box-shadow: 0 0 0 1px rgba(235, 131, 23, 0.1);
   }
 `;
 
 const ResultsInfo = styled.div`
-  margin-top: 12px;
-  padding-top: 12px;
+  margin-top: 6px;
+  padding-top: 6px;
   border-top: 1px solid #e2e8f0;
-  font-size: 14px;
+  font-size: 10px;
   color: #64748b;
   text-align: center;
 `;

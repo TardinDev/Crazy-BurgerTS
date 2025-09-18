@@ -18,9 +18,12 @@ const LeftSideStyle = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #f8f9fa;
+  background-color: #eb8317;
   gap: 16px;
   padding: 16px;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 12px;
 
   .footer {
     background-color: #000;
@@ -33,6 +36,8 @@ const LeftSideStyle = styled.div`
     padding: 16px;
     border-radius: 8px;
     margin-top: auto;
+    flex-shrink: 0;
+    height: 64px;
 
     strong {
       font-weight: bold;

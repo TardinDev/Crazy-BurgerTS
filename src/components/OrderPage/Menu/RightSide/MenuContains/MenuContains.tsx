@@ -44,16 +44,23 @@ const MenuContains: React.FC<MenuContainsType> = ({ onSelectBurger, burgers: pro
 
 
 const MenuContainsStyle = styled.div`
-  background-color: lightgrey;
-  padding: 10px 20px;
+  background-color: #f0f2f5;
+  padding: 12px 16px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 100%;
+  align-content: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   @media (max-width: 480px) {
@@ -62,11 +69,17 @@ const MenuContainsStyle = styled.div`
 `;
 
 const EmptyMessage = styled.div`
-  grid-column: span 3;
+  grid-column: 1 / -1;
   text-align: center;
-  font-size: 3rem;
-  color: gray;
-  padding: 20px;
+  font-size: 2rem;
+  color: #64748b;
+  padding: 40px 20px;
+
+  h3 {
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.4;
+  }
 `;
 
 export default MenuContains;

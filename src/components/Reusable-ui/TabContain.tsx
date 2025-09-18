@@ -2,7 +2,7 @@ import React from 'react';
 import { FaEuroSign, FaCamera } from 'react-icons/fa';
 import { FaBurger } from 'react-icons/fa6';
 import styled from 'styled-components';
-import { LoadingButton } from './LoadingSpinner';
+import { Button } from './Button';
 import { useBurgerForm } from '../../hooks/useBurgerForm';
 
 const TabContain: React.FC = () => {
@@ -54,13 +54,16 @@ const TabContain: React.FC = () => {
       </div>
 
       <div className="Btn">
-        <LoadingButton
+        <Button
+          variant="primary"
+          size="md"
           isLoading={isSubmitting}
-          onClick={submitBurger}
           disabled={Object.keys(errors).length > 0}
+          onClick={submitBurger}
+          isFullWidth
         >
           Ajouter au Menu
-        </LoadingButton>
+        </Button>
         {Object.keys(errors).length > 0 && (
           <ErrorList>
             {Object.entries(errors).map(([field, error]) => (

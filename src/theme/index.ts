@@ -13,39 +13,39 @@ export const theme = {
 
     // Neutral colors
     gray: {
-      50: '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827',
+      50: '#fafbfc',
+      100: '#f6f8fa',
+      200: '#eaecef',
+      300: '#d6d9dc',
+      400: '#a8b2bc',
+      500: '#7a8490',
+      600: '#5a6470',
+      700: '#434950',
+      800: '#2c3238',
+      900: '#1a1e22',
     },
 
     // Text colors
     text: {
-      primary: '#1e293b',
-      secondary: '#64748b',
-      muted: '#94a3b8',
+      primary: '#2d3748',
+      secondary: '#718096',
+      muted: '#a0aec0',
       white: '#ffffff',
     },
 
     // Background colors
     background: {
       primary: '#ffffff',
-      secondary: '#f8fafc',
-      muted: '#f1f5f9',
+      secondary: '#fafbfc',
+      muted: '#f6f8fa',
       dark: '#0f172a',
     },
 
     // Border colors
     border: {
-      light: '#e2e8f0',
-      medium: '#cbd5e1',
-      dark: '#64748b',
+      light: '#edf2f7',
+      medium: '#e2e8f0',
+      dark: '#718096',
     },
   },
 
@@ -90,10 +90,10 @@ export const theme = {
   },
 
   shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03)',
   },
 
   breakpoints: {

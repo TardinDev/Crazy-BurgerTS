@@ -33,7 +33,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <SearchContainer>
       <SearchIcon>
-        <FaSearch size={16} color="#666" />
+        <FaSearch size={14} color="#666" />
       </SearchIcon>
       <SearchInput
         type="text"
@@ -43,7 +43,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       />
       {value && (
         <ClearButton onClick={handleClear} type="button">
-          <FaTimes size={14} color="#666" />
+          <FaTimes size={12} color="#666" />
         </ClearButton>
       )}
     </SearchContainer>
@@ -55,12 +55,12 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 280px;
 `;
 
 const SearchIcon = styled.div`
   position: absolute;
-  left: 12px;
+  left: 8px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -68,18 +68,18 @@ const SearchIcon = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 12px 40px 12px 40px;
-  border: 2px solid #e1e5e9;
-  border-radius: 25px;
-  font-size: 14px;
-  background-color: #f8f9fa;
+  padding: 6px 30px 6px 30px;
+  border: 1px solid #e1e5e9;
+  border-radius: 16px;
+  font-size: 12px;
+  background-color: #f0f4f8;
   transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #eb8317;
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(235, 131, 23, 0.1);
+    background-color: #f8fafe;
+    box-shadow: 0 0 0 1px rgba(235, 131, 23, 0.1);
   }
 
   &::placeholder {
@@ -89,11 +89,11 @@ const SearchInput = styled.input`
 
 const ClearButton = styled.button`
   position: absolute;
-  right: 12px;
+  right: 8px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 2px;
   border-radius: 50%;
   display: flex;
   align-items: center;

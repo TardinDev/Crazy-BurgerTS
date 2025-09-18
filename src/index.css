@@ -1,10 +1,19 @@
 * {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  
-  box-sizing: border-box; 
+
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   padding:0;
   margin:0;
+}
 
-  
+body {
+  background-color: #fafbfc;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background-color: #fafbfc;
 }

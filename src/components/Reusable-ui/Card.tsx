@@ -7,6 +7,7 @@ interface CardProps {
   shadow?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;
   className?: string;
+  fullHeight?: boolean;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -15,6 +16,7 @@ export const Card: React.FC<CardProps> = ({
   shadow = 'md',
   hover = false,
   className,
+  fullHeight = false,
 }) => {
   return (
     <StyledCard
@@ -22,6 +24,7 @@ export const Card: React.FC<CardProps> = ({
       shadow={shadow}
       hover={hover}
       className={className}
+      fullHeight={fullHeight}
     >
       {children}
     </StyledCard>
@@ -70,11 +73,15 @@ const StyledCard = styled.div<{
   padding: CardProps['padding'];
   shadow: CardProps['shadow'];
   hover: boolean;
+  fullHeight: boolean;
 }>`
-  background-color: ${({ theme }) => theme.colors.background.primary};
+  background-color: #f8fafe;
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   border: 1px solid ${({ theme }) => theme.colors.border.light};
   transition: all ${({ theme }) => theme.transitions.normal};
+  display: flex;
+  flex-direction: column;
+  ${({ fullHeight }) => fullHeight && 'height: 100%;'}
 
   ${({ padding }) => getPaddingStyles(padding)}
   ${({ shadow }) => getShadowStyles(shadow)}

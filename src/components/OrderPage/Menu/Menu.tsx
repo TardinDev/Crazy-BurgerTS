@@ -19,21 +19,13 @@ export default function Menu() {
 }
 
 const MenuStyle = styled.div`
+  background-color: #B7B7B7;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  overflow: hidden;
 
-      background-color:#B7B7B7;
-      height:80vh;
-
-     display:grid;
-     grid-template-columns:25% 1fr;
-      
-
-
-      .leftSide {
-         background-color:#536493;
-         
-      }
-
-  
-
-
+  .leftSide {
+    background-color: #536493;
+  }
 `

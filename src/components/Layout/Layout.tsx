@@ -21,11 +21,12 @@ export const Layout: React.FC<LayoutProps> = ({
 
 const LayoutContainer = styled.div<{ backgroundColor: string; padding: string }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
-  min-height: 100vh;
+  height: 100vh;
   padding: ${({ padding }) => padding};
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
 `;
 
 export default Layout;

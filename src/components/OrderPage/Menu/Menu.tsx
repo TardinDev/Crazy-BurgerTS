@@ -19,13 +19,19 @@ export default function Menu() {
 }
 
 const MenuStyle = styled.div`
-  background-color: #B7B7B7;
+  background: ${({ theme }) => theme.colors.background.muted};
   flex: 1;
   display: grid;
   grid-template-columns: 25% 1fr;
   overflow: hidden;
+  transition: background ${({ theme }) => theme.transitions.normal};
 
-  .leftSide {
-    background-color: #536493;
+  @media (max-width: 1024px) {
+    grid-template-columns: 30% 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 `

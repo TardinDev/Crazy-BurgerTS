@@ -66,22 +66,17 @@ const MenuContainerWrapper = styled.div`
 `;
 
 const SearchWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 100;
-  background: rgba(248, 250, 254, 0.98);
-  backdrop-filter: blur(10px);
-  padding: 8px;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: transparent;
+  padding: 12px;
   animation: slideDown 0.3s ease-out;
+  flex-shrink: 0;
 
   @keyframes slideDown {
     from {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-10px);
     }
     to {
       opacity: 1;
@@ -91,36 +86,38 @@ const SearchWrapper = styled.div`
 `;
 
 const FloatingSearchButton = styled.button<{ isOpen: boolean }>`
-  position: absolute;
-  top: 16px;
-  right: 16px;
+  position: ${({ isOpen }) => isOpen ? 'relative' : 'absolute'};
+  top: ${({ isOpen }) => isOpen ? '0' : '16px'};
+  right: ${({ isOpen }) => isOpen ? '0' : '16px'};
   z-index: 200;
-  background: #1a1a1a;
-  color: white;
-  border: none;
+  background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+  color: #000;
+  border: 2px solid ${({ isOpen }) => isOpen ? '#ff8c00' : 'transparent'};
   border-radius: 25px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  margin: ${({ isOpen }) => isOpen ? '12px 12px 0 12px' : '0'};
+  align-self: ${({ isOpen }) => isOpen ? 'flex-end' : 'auto'};
 
   &:hover {
-    background: #333;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffb730 0%, #ffa500 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 165, 0, 0.5);
   }
 
   &:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
   }
 
-  ${({ isOpen }) => isOpen && `
-    background: #333;
-  `}
+  svg {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  }
 `;

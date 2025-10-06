@@ -137,24 +137,27 @@ export const BurgerSearch: React.FC<BurgerSearchProps> = ({ onFilteredBurgers })
 };
 
 const SearchContainer = styled.div`
-  background: #f8fafe;
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e8f0;
+  background: ${({ theme }) => theme.colors.background.primary};
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  border: 1px solid ${({ theme }) => theme.colors.border.light};
+  transition: all ${({ theme }) => theme.transitions.normal};
+  position: relative;
+  z-index: 10;
 `;
 
 const SearchHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
   h3 {
     margin: 0;
-    color: #1e293b;
-    font-size: 14px;
+    color: ${({ theme }) => theme.colors.text.primary};
+    font-size: 16px;
     font-weight: 600;
   }
 `;
@@ -193,34 +196,39 @@ const FilterGroup = styled.div`
 `;
 
 const FilterLabel = styled.label`
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  color: #374151;
-  margin-bottom: 2px;
+  color: ${({ theme }) => theme.colors.text.secondary};
+  margin-bottom: 4px;
 `;
 
 const FilterSelect = styled.select`
-  padding: 4px 8px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 12px;
-  background: white;
+  padding: 8px 12px;
+  border: 1px solid ${({ theme }) => theme.colors.border.medium};
+  border-radius: 6px;
+  font-size: 13px;
+  background: ${({ theme }) => theme.colors.background.primary};
+  color: ${({ theme }) => theme.colors.text.primary};
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 
   &:focus {
     outline: none;
     border-color: #eb8317;
-    box-shadow: 0 0 0 1px rgba(235, 131, 23, 0.1);
+    box-shadow: 0 0 0 3px rgba(235, 131, 23, 0.1);
+  }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
 const ResultsInfo = styled.div`
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid #e2e8f0;
-  font-size: 10px;
-  color: #64748b;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid ${({ theme }) => theme.colors.border.light};
+  font-size: 11px;
+  color: ${({ theme }) => theme.colors.text.muted};
   text-align: center;
 `;
 

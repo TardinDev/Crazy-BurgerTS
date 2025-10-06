@@ -1,4 +1,4 @@
-export const theme = {
+export const lightTheme = {
   colors: {
     primary: '#eb8317',
     primaryDark: '#d4741a',
@@ -127,4 +127,36 @@ export const theme = {
   },
 } as const;
 
-export type Theme = typeof theme;
+export const darkTheme = {
+  ...lightTheme,
+  colors: {
+    ...lightTheme.colors,
+
+    // Text colors for dark mode
+    text: {
+      primary: '#f8fafc',
+      secondary: '#cbd5e1',
+      muted: '#94a3b8',
+      white: '#ffffff',
+    },
+
+    // Background colors for dark mode
+    background: {
+      primary: '#0f172a',
+      secondary: '#1e293b',
+      muted: '#334155',
+      dark: '#020617',
+    },
+
+    // Border colors for dark mode
+    border: {
+      light: '#334155',
+      medium: '#475569',
+      dark: '#64748b',
+    },
+  },
+} as const;
+
+export const theme = lightTheme;
+
+export type Theme = typeof lightTheme;

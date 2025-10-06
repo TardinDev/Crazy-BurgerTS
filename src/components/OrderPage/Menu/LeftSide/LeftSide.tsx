@@ -18,8 +18,9 @@ const LeftSideStyle = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 100%;
   background-color: #eb8317;
-  gap: 16px;
+  gap: 12px;
   padding: 16px;
   overflow: hidden;
   border: 3px solid white;
@@ -28,16 +29,17 @@ const LeftSideStyle = styled.div`
   .footer {
     background-color: #000;
     color: orange;
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px;
-    border-radius: 8px;
-    margin-top: auto;
+    padding: 6px 8px;
+    border-radius: 6px;
     flex-shrink: 0;
-    height: 64px;
+    min-height: 32px;
+    max-height: 32px;
+    margin-top: auto;
 
     strong {
       font-weight: bold;
@@ -46,10 +48,13 @@ const LeftSideStyle = styled.div`
 
   @media (max-width: 768px) {
     padding: 8px;
+    gap: 8px;
 
     .footer {
-      font-size: 0.9rem;
-      padding: 12px;
+      font-size: 0.7rem;
+      padding: 4px 6px;
+      min-height: 28px;
+      max-height: 28px;
     }
   }
 `;

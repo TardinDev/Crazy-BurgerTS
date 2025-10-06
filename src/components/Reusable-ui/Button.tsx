@@ -109,9 +109,9 @@ const getVariantStyles = (variant: ButtonVariant) => {
 const getSizeStyles = (size: ButtonSize) => {
   const styles = {
     sm: css`
-      padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+      padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
       font-size: ${({ theme }) => theme.fontSize.sm};
-      min-height: 32px;
+      min-height: 24px;
     `,
     md: css`
       padding: ${({ theme }) => `${theme.spacing.md} ${theme.spacing.lg}`};

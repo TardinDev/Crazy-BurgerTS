@@ -33,13 +33,16 @@ export default function Profile({inputName}: ProfileType) {
 
 
 const ProfileStyle = styled.div`
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   padding-top: 10px;
 
-   display:flex;
-   align-items:center;
-   gap:10px;
-   padding-top:10px;
+   @media (max-width: 768px) {
+     gap: 12px;
+   }
 
-
-
-
+   @media (max-width: 480px) {
+     gap: 8px;
+   }
 `

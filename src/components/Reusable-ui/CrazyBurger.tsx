@@ -1,49 +1,37 @@
-import styled from "styled-components"
-
+import React from "react";
+import styled from "styled-components";
 
 type CrazyBurgerType = {
+  imgWidth: string;
+  imgHeight: string;
+  label: string;
+};
 
-    imgWidth:string,
-    imgHeight:string,
-    label:string,
-    
-}
-
-
-export default function CrazyBurger({imgWidth, imgHeight, label}: CrazyBurgerType) {
-
-
+const CrazyBurger: React.FC<CrazyBurgerType> = ({ imgWidth, imgHeight, label }) => {
   return (
+    <CrazyBurgerStyle $imgWidth={imgWidth} $imgHeight={imgHeight} $label={label}>
+      <h1>Crazy</h1>
+      <img src="/images/logo-orange.png" alt="burgerimage" />
+      <h1>Burger</h1>
+    </CrazyBurgerStyle>
+  );
+};
 
-      <CrazyBurgerStyle imgWidth={imgWidth} imgHeight={imgHeight} label={label}  >
+const CrazyBurgerStyle = styled.div<{ $imgWidth: string; $imgHeight: string; $label: string }>`
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-        <h1>Crazy</h1>
-          <img src="/images/logo-orange.png" alt="burgerimage"/>
-        <h1>Burger</h1>
+  h1 {
+    font-size: ${props => props.$label};
+    color: #EB8317;
+  }
 
-      </CrazyBurgerStyle>
+  img {
+    width: ${props => props.$imgWidth};
+    height: ${props => props.$imgHeight};
+  }
+`;
 
-  )
-}
-
-const CrazyBurgerStyle = styled.div<CrazyBurgerType>`
-
-
-      background-color:#fff;
-      display:flex;
-      align-items:center;
-      gap:10px;
-
-      h1 {
-        font-Size:${props => props.label};
-        color:#EB8317;
-      }
-
-      img {
-        width:${props => props.imgWidth};
-        height:${props => props.imgHeight};
-        
-      }
-
-
-`
+export default CrazyBurger;

@@ -76,81 +76,140 @@ const ChangeBurgerForm: React.FC<ChangeBurgerFormProps> = ({
 
 
 const ChangeBurgerFormStyle = styled.div`
-  background-color: #f8f9fa;
+  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
-  padding: 1rem 5rem;
+  gap: 20px;
+  padding: 0;
 
   .img-Input {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
 
   img {
-    width: 15rem;
-    height: 10rem;
+    width: 180px;
+    height: 120px;
     object-fit: cover;
-    border: 1px solid orange;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ffa500;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(255, 165, 0, 0.25);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(255, 165, 0, 0.35);
+    }
   }
 
   h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: lightgrey;
-    width: 15rem;
-    height: 10rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: #94a3b8;
+    width: 180px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px dashed rgba(255, 165, 0, 0.3);
+    border-radius: 16px;
+    background: rgba(30, 41, 59, 0.5);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      background-color: grey;
-      transform: scale(1.05);
+      border-color: #ffa500;
+      background: rgba(255, 165, 0, 0.1);
+      color: #ffa500;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
   .inputBlock {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    flex: 1;
 
     .iconInput {
       display: flex;
       align-items: center;
-      gap: 2px;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid grey;
-      border-radius: 5px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 2px solid rgba(255, 165, 0, 0.2);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+      svg {
+        flex-shrink: 0;
+        color: #94a3b8;
+        transition: all 0.3s ease;
+      }
 
       &:hover {
-        border-color: orange;
-        box-shadow: 0 0 10px rgba(235, 131, 23, 0.5);
+        border-color: #ffa500;
+        box-shadow: 0 4px 16px rgba(255, 165, 0, 0.25);
+
+        svg {
+          color: #ffa500;
+          transform: scale(1.1);
+        }
+      }
+
+      &:focus-within {
+        border-color: #ff8c00;
+        box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.15);
+        background: rgba(30, 41, 59, 0.8);
+
+        svg {
+          color: #ff8c00;
+        }
       }
 
       input {
         border: none;
         outline: none;
-        font-size: 1rem;
+        font-size: 15px;
         flex: 1;
-        padding: 0.1rem;
+        padding: 0;
+        background: transparent;
+        color: #e2e8f0;
+        font-weight: 500;
+
+        &::placeholder {
+          color: #64748b;
+          font-weight: 400;
+        }
       }
     }
   }
 
   .Btn {
-    margin-left: -8rem;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 16px;
+
+    .img-Input {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    img, h2 {
+      width: 100%;
+      height: 140px;
+    }
   }
 `;
 

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { FaShoppingCart, FaTrash, FaPlus, FaMinus, FaClock, FaTag } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaShoppingCart, FaTrash, FaPlus, FaMinus, FaClock } from 'react-icons/fa';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
@@ -8,9 +8,11 @@ import { formatPrice } from '../../../../lib/utils';
 import { Card } from '../../../Reusable-ui/Card';
 import { Button } from '../../../Reusable-ui/Button';
 import { Badge } from '../../../Reusable-ui/Badge';
+import { OrderSummaryModal } from '../../../Reusable-ui/OrderSummaryModal';
 
 export const BasketSummary: React.FC = () => {
   const { basket, removeFromBasket, updateBasketItemQuantity, clearBasket } = useContext(orderContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [promoCode, setPromoCode] = React.useState('');
   const [discount, setDiscount] = React.useState(0);
 
@@ -57,17 +59,27 @@ export const BasketSummary: React.FC = () => {
     });
   };
 
-  if (totalItems === 0) {
-    return (
-      <Card padding="lg" shadow="md">
-        <EmptyBasket>
-          <FaShoppingCart size={48} color="#ccc" />
-          <p>Votre panier est vide</p>
-          <small>Ajoutez des burgers pour commencer</small>
-        </EmptyBasket>
-      </Card>
-    );
-  }
+  const handlePayment = (seatingChoice: 'interior' | 'terrace', paymentMethod: string, promoCode?: string) => {
+    const location = seatingChoice === 'interior' ? 'Intérieur' : 'Terrasse';
+    const paymentLabels: { [key: string]: string } = {
+      'terminal': 'sur la borne',
+      'counter': 'à la caisse',
+      'visa': 'par Visa',
+      'mastercard': 'par Mastercard',
+      'paypal': 'par PayPal',
+      'applepay': 'par Apple Pay',
+    };
+
+    const paymentText = paymentLabels[paymentMethod] || paymentMethod;
+    const promoText = promoCode ? ` avec code promo ${promoCode}` : '';
+
+    toast.success(`Commande validée pour ${location}, paiement ${paymentText}${promoText}!`, {
+      icon: '✅',
+      duration: 5000,
+    });
+    setIsModalOpen(false);
+    clearBasket();
+  };
 
   // Auto-scroll vers le bas quand un nouvel item est ajouté
   const basketItemsRef = React.useRef<HTMLDivElement>(null);
@@ -82,6 +94,18 @@ export const BasketSummary: React.FC = () => {
       }, 100);
     }
   }, [basket.length]);
+
+  if (totalItems === 0) {
+    return (
+      <Card padding="lg" shadow="md">
+        <EmptyBasket>
+          <FaShoppingCart size={48} color="#ccc" />
+          <p>Votre panier est vide</p>
+          <small>Ajoutez des burgers pour commencer</small>
+        </EmptyBasket>
+      </Card>
+    );
+  }
 
   return (
     <BasketContainer>
@@ -178,12 +202,20 @@ export const BasketSummary: React.FC = () => {
               variant="primary"
               size="md"
               isFullWidth
+              onClick={() => setIsModalOpen(true)}
             >
               Commander
             </Button>
           </BasketFooter>
         </BasketContent>
       </Card>
+
+      <OrderSummaryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        items={basket}
+        onPayment={handlePayment}
+      />
     </BasketContainer>
   );
 };

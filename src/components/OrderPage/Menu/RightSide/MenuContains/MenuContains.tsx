@@ -44,7 +44,7 @@ const MenuContains: React.FC<MenuContainsType> = ({ onSelectBurger, burgers: pro
 
 
 const MenuContainsStyle = styled.div`
-  background-color: #f0f2f5;
+  background: ${(props) => props.theme.colors.background.muted};
   padding: 12px 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -53,6 +53,24 @@ const MenuContainsStyle = styled.div`
   overflow-y: auto;
   height: 100%;
   align-content: start;
+  transition: background ${(props) => props.theme.transitions.normal};
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${(props) => props.theme.colors.background.secondary};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.colors.primary};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme.colors.primaryDark};
+  }
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
@@ -72,13 +90,14 @@ const EmptyMessage = styled.div`
   grid-column: 1 / -1;
   text-align: center;
   font-size: 2rem;
-  color: #64748b;
+  color: ${(props) => props.theme.colors.text.secondary};
   padding: 40px 20px;
 
   h3 {
     margin: 0;
-    font-weight: 500;
+    font-weight: ${(props) => props.theme.fontWeight.medium};
     line-height: 1.4;
+    color: ${(props) => props.theme.colors.text.muted};
   }
 `;
 

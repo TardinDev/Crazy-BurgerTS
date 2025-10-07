@@ -137,13 +137,13 @@ export const BurgerSearch: React.FC<BurgerSearchProps> = ({ onFilteredBurgers })
 };
 
 const SearchContainer = styled.div`
-  background: ${({ theme }) => theme.colors.background.primary};
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: ${({ theme }) => theme.shadows.md};
-  border: 1px solid ${({ theme }) => theme.colors.border.light};
-  transition: all ${({ theme }) => theme.transitions.normal};
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 165, 0, 0.2);
+  transition: all 0.3s ease;
   position: relative;
   z-index: 10;
 `;
@@ -156,7 +156,7 @@ const SearchHeader = styled.div`
 
   h3 {
     margin: 0;
-    color: ${({ theme }) => theme.colors.text.primary};
+    color: #e2e8f0;
     font-size: 16px;
     font-weight: 600;
   }
@@ -198,37 +198,43 @@ const FilterGroup = styled.div`
 const FilterLabel = styled.label`
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.text.secondary};
+  color: #94a3b8;
   margin-bottom: 4px;
 `;
 
 const FilterSelect = styled.select`
   padding: 8px 12px;
-  border: 1px solid ${({ theme }) => theme.colors.border.medium};
+  border: 2px solid rgba(255, 165, 0, 0.2);
   border-radius: 6px;
   font-size: 13px;
-  background: ${({ theme }) => theme.colors.background.primary};
-  color: ${({ theme }) => theme.colors.text.primary};
+  background: rgba(30, 41, 59, 0.6);
+  color: #e2e8f0;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: #eb8317;
-    box-shadow: 0 0 0 3px rgba(235, 131, 23, 0.1);
+    border-color: #ffa500;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.15);
   }
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.primary};
+    border-color: #ffa500;
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  option {
+    background: #1e293b;
+    color: #e2e8f0;
   }
 `;
 
 const ResultsInfo = styled.div`
   margin-top: 8px;
   padding-top: 8px;
-  border-top: 1px solid ${({ theme }) => theme.colors.border.light};
+  border-top: 1px solid rgba(255, 165, 0, 0.15);
   font-size: 11px;
-  color: ${({ theme }) => theme.colors.text.muted};
+  color: #64748b;
   text-align: center;
 `;
 

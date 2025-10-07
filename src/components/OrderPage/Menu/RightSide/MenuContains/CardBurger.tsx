@@ -50,45 +50,50 @@ const CardBurger: React.FC<CardBurgerType> = ({ id, image, title, price, onClick
 
 const CardBurgerStyle = styled.div`
   position: relative;
-  background-color: #f6f9fc;
-  border-radius: 8px;
+  background: ${(props) => props.theme.colors.background.primary};
+  border-radius: 12px;
   width: 11rem;
   padding: 0.75rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: ${(props) => props.theme.shadows.md};
+  border: 2px solid ${(props) => props.theme.colors.border.light};
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background-color: #f0f6fb;
-    transform: scale(1.03);
+    background: ${(props) => props.theme.colors.background.secondary};
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: ${(props) => props.theme.shadows.xl};
+    border-color: ${(props) => props.theme.colors.primary};
   }
 
   .delete-icon {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 8px;
+    right: 8px;
     cursor: pointer;
-    color: #ff0000;
-    background-color: rgba(255, 255, 255, 0.9);
+    color: ${(props) => props.theme.colors.error};
+    background: ${(props) => props.theme.colors.background.primary};
     border-radius: 50%;
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: ${(props) => props.theme.shadows.md};
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid ${(props) => props.theme.colors.error};
 
     &:hover {
-      background-color: rgba(255, 0, 0, 0.8);
-      color: white;
-      transform: scale(1.1);
+      background: ${(props) => props.theme.colors.error};
+      color: ${(props) => props.theme.colors.text.white};
+      transform: scale(1.15);
+      box-shadow: ${(props) => props.theme.shadows.lg};
     }
 
     svg {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -96,20 +101,27 @@ const CardBurgerStyle = styled.div`
     width: 100%;
     height: 7rem;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-bottom: 0.5rem;
+    border: 2px solid ${(props) => props.theme.colors.border.medium};
+    transition: border-color 0.3s ease;
+  }
+
+  &:hover img {
+    border-color: ${(props) => props.theme.colors.primary};
   }
 
   h2 {
     font-size: 1rem;
     margin-bottom: 0.3rem;
-    color: #333;
+    color: ${(props) => props.theme.colors.text.primary};
     text-align: center;
     line-height: 1.3;
     height: 2.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: ${(props) => props.theme.fontWeight.semibold};
   }
 
   .price-btn {
@@ -121,24 +133,32 @@ const CardBurgerStyle = styled.div`
 
     .price {
       font-size: 1rem;
-      color: #555;
-      font-weight: 600;
+      color: ${(props) => props.theme.colors.text.primary};
+      font-weight: ${(props) => props.theme.fontWeight.bold};
     }
 
     .add-btn {
       display: flex;
       align-items: center;
-      background-color: #eb8317;
-      color: white;
+      background: linear-gradient(135deg, ${(props) => props.theme.colors.primary} 0%, ${(props) => props.theme.colors.primaryDark} 100%);
+      color: ${(props) => props.theme.colors.text.white};
       border: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.8rem;
-      transition: background-color 0.2s ease-in-out;
+      font-size: 0.85rem;
+      font-weight: ${(props) => props.theme.fontWeight.semibold};
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: ${(props) => props.theme.shadows.sm};
 
       &:hover {
-        background-color: #ffbd73;
+        background: linear-gradient(135deg, ${(props) => props.theme.colors.primaryLight} 0%, ${(props) => props.theme.colors.primary} 100%);
+        transform: translateY(-2px);
+        box-shadow: ${(props) => props.theme.shadows.md};
+      }
+
+      &:active {
+        transform: translateY(0);
       }
 
       svg {

@@ -2,29 +2,23 @@ import styled from "styled-components"
 import CrazyBurger from "../../Reusable-ui/CrazyBurger";
 import Profile from "./Profile";
 import { ThemeToggle } from "../../Reusable-ui/ThemeToggle";
+import SwitchBtn from "../../Reusable-ui/SwitchBtn";
 
 type HeaderOrderType = {
-    inputName?: string; // inputName peut être string ou undefined
+    inputName?: string;
   };
 
 export default function HeaderOrder({inputName}: HeaderOrderType ) {
-
-
   return (
-
-    <HeaderOrderStyle >
-
+    <HeaderOrderStyle>
       <CrazyBurger imgWidth="4rem" imgHeight="3rem" label="8rem"/>
 
       <HeaderActions>
         <ThemeToggle />
+        <SwitchBtn />
         <Profile inputName={inputName} />
       </HeaderActions>
-
-
      </HeaderOrderStyle>
-
-
   )
 }
 
@@ -58,13 +52,13 @@ const HeaderOrderStyle = styled.div`
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 40px;
 
   @media (max-width: 768px) {
-    gap: 12px;
+    gap: 24px;
   }
 
   @media (max-width: 480px) {
-    gap: 8px;
+    gap: 16px;
   }
 `

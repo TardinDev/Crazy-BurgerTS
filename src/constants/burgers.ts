@@ -51,8 +51,68 @@ export const BURGER_DATA: Burger[] = [
   },
   {
     id: 9,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBE82lYrhIz7RuK_IMxyWa3Qym1BTCxeHQDg&s", 
-    title: "Go'Feel Burgers",   
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBE82lYrhIz7RuK_IMxyWa3Qym1BTCxeHQDg&s",
+    title: "Go'Feel Burgers",
     price: 14.99
+  },
+  {
+    id: 10,
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&fit=crop",
+    title: "Bacon Cheeseburger",
+    price: 12.49
+  },
+  {
+    id: 11,
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&h=500&fit=crop",
+    title: "Double Cheese Burger",
+    price: 13.99
+  },
+  {
+    id: 12,
+    image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=500&h=500&fit=crop",
+    title: "Mushroom Swiss Burger",
+    price: 11.99
+  },
+  {
+    id: 13,
+    image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop",
+    title: "BBQ Burger",
+    price: 10.49
+  },
+  {
+    id: 14,
+    image: "https://images.unsplash.com/photo-1562547620-ff0a314f85dd?w=500&h=500&fit=crop",
+    title: "Chicken Deluxe",
+    price: 9.99
+  },
+  {
+    id: 15,
+    image: "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=500&h=500&fit=crop",
+    title: "Veggie Burger Supreme",
+    price: 8.49
+  },
+  {
+    id: 16,
+    image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=500&h=500&fit=crop",
+    title: "Spicy Jalapeño Burger",
+    price: 11.49
+  },
+  {
+    id: 17,
+    image: "https://images.unsplash.com/photo-1585238341710-4aeb32e8f7e3?w=500&h=500&fit=crop",
+    title: "Hawaiian Burger",
+    price: 12.99
+  },
+  {
+    id: 18,
+    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=500&fit=crop",
+    title: "Texas BBQ Burger",
+    price: 13.49
+  },
+  {
+    id: 19,
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&h=500&fit=crop&q=80",
+    title: "Classic American Burger",
+    price: 9.49
   }
 ];

@@ -90,9 +90,9 @@ const FloatingSearchButton = styled.button<{ isOpen: boolean }>`
   top: ${({ isOpen }) => isOpen ? '0' : '16px'};
   right: ${({ isOpen }) => isOpen ? '0' : '16px'};
   z-index: 200;
-  background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
-  color: #000;
-  border: 2px solid ${({ isOpen }) => isOpen ? '#ff8c00' : 'transparent'};
+  background: linear-gradient(135deg, ${(props) => props.theme.colors.primary} 0%, ${(props) => props.theme.colors.primaryDark} 100%);
+  color: ${(props) => props.theme.colors.text.white};
+  border: 2px solid ${({ isOpen, theme }) => isOpen ? theme.colors.primaryDark : 'transparent'};
   border-radius: 25px;
   padding: 10px 20px;
   display: flex;
@@ -101,16 +101,16 @@ const FloatingSearchButton = styled.button<{ isOpen: boolean }>`
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+  box-shadow: ${(props) => props.theme.shadows.md};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   margin: ${({ isOpen }) => isOpen ? '12px 12px 0 12px' : '0'};
   align-self: ${({ isOpen }) => isOpen ? 'flex-end' : 'auto'};
 
   &:hover {
-    background: linear-gradient(135deg, #ffb730 0%, #ffa500 100%);
+    background: linear-gradient(135deg, ${(props) => props.theme.colors.primaryLight} 0%, ${(props) => props.theme.colors.primary} 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 165, 0, 0.5);
+    box-shadow: ${(props) => props.theme.shadows.lg};
   }
 
   &:active {
